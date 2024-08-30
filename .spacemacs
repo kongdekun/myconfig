@@ -91,7 +91,20 @@ This function should only modify configuration layer settings."
 
      github-copilot
 
-     treemacs)
+     treemacs
+
+     pdf
+
+     (org :variables
+          org-todo-dependencies-strategy 'naive-auto
+          org-enable-org-journal-support t
+          org-projectile-file "TODOs.org"
+          org-enable-roam-support t
+          org-enable-roam-ui t
+          org-enable-appear-support t
+          org-enable-transclusion-support t
+          )
+     )
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -638,7 +651,7 @@ before packages are loaded."
     (define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
     (define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word))
 
-  (add-hook 'prog-mode-hook 'copilot-mode)
+  ;; (add-hook 'prog-mode-hook 'copilot-mode)
 
 
   (with-eval-after-load 'dap-hydra
@@ -784,7 +797,18 @@ _Q_: Disconnect     _sl_: List locals        _bl_: Set log message
     (setq lsp-ui-sideline-show-diagnostics t)
     (setq lsp-ui-sideline-show-code-actions t)
     (setq lsp-ui-imenu-auto-refresh t)
+
     )
+
+  (with-eval-after-load 'org
+    ;; here goes your Org config :)
+    ;; ....
+    (setq org-appear-trigger 'manual)
+
+    )
+
+
+
 
 
   )
